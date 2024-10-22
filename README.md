@@ -1,88 +1,110 @@
+# **PROYECTO URBAN ROUTES ES**
+
 Mariana Rubio Jaramillo. Cohorte 14
 
-Descripción del proyecto.
+## **Descripción del proyecto.**
 
-Urban Grocers es una plataforma interactiva que permite al cliente comprar artículos comestibles, crear kits y solicitar un servicio de entrega. Por ende, el cliente debe registrarse para crear un nuevo usuario y asi tener su propio carrito de compra.
+Urban Routes es una aplicación que crea rutas y calcula la duración y precio del viaje para diferentes tipos de transporte. 
+Contiene dos campos para las direcciones: "Desde" y "Hasta". Además, cuenta con tres modos ("Óptimo", "Flash" y "Personal"), así como íconos para los tipos de 
+transporte (automóvil del usuario, a pie, taxi, bicicleta, scooter o compartir un automóvil). Al pedir un taxi, muestran los distintos tipos de tarifa para taxi (Laboral,
+ sueño, relajante, hablador, comfort y glamuroso), donde cada uno tiene diferentes requisitos del pedido. Al pedir un taxi, es obligatorio ingresar un número de
+teléfono, la cual, es la validada por un código de verificación y el método de pago puede ser en efectivo o con tarjeta bancaria. 
+ 
+En este caso se comprobarán las funcionalidades de Urban Routes al pedir un taxi por medio de la tarifa "Comfort".
 
-La plataforma tiene un menú principal para hacer pedidos, la cual, consta de varios kits que ya vienen establecidos y además, el usuario puede crear su propio kit. Dentro de estos kits, se pueden encontrar productos organizados por catalogos, precio y cantidad.
+## **Tecnologías y técnicas utilizadas.**
 
-En este caso, se automatizaron las pruebas para la lista de comprobación del campo 'name' en la solicitud de un kit de productos, es decir, se deberá crear un nuevo usuario y crear un kit dentro del nuevo usuario.
-
-Tecnologías y técnicas utilizadas.
-
-Documentación de la API de Urban Grocers = URL + /docs/ 
 GitHub
 Pycharm
 Lenguaje python
 Librería requests
-Pytest
-Reglas
+Paquete Pytest
+Paquete selenium
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from selenium import webdriver
+import json 
+import time 
+from selenium.common import WebDriverException
 
-Configuration.py
+## **Reglas**
 
-En este archivo están almacenadas las URL y rutas de solicitud que fueron obtenidas por la documentación de API de Urban Grocers.
+### **locators.py**
 
-Data.py
+En este archivo está almacenada la clase LocatorsUrbanRoutesPage, la cual, contiene los localizadores para cada campo y/botón.
 
-En este archivo están almacenados los cuerpos de la solicitud POST.
+### **methods.py**
 
-Sender_stand_request.py
+En este archivo está la clase MethodsUrbanRoutesPage, la cual, contiene los métodos.
 
-En este archivo están almanaceadas las solicitudes para crear un usuario y para crear un kit dentro del nuevo usuario.
+### **data.py**
 
-Create_kit_name_kit_test.py
+En este archivo estan almacenadas los cuerpos que se solicitan por medio del get y el url de urban routes.
 
-En este archivo están almacenadas las pruebas de la lista de comprobación del campo 'name'.
+### **main.py**
 
-Pasos para ejecutar las pruebas
+En este archivo están almacenadas las pruebas para pedir un taxi por medio de la tarifa "Comfort".
 
-Creación de un nuevo usuario
 
-Descargar el paquete requests.
-Importar configuration, data y requests.
-Crear un nuevo usuario con el método POST utilizando las rutas URL_SERVICE y CREATE_USER_PATH y el body del archivo data.py
-Guardar el authToken.
-Resultado Esta solicitud generará un nuevo usuario y un token de autenticación 'authToken'.
+## **Pasos para realizar las pruebas pertinentes al pedir un taxi por medio de la tarifa comfort**
 
-Creación de un kit dentro del usuario nuevo
+### 1. Configurar la dirección
 
-Realizar todos los pasos de 'Creación de un nuevo usuario'.
-Crear el kit con el método POST utilizando la rutas URL_SERVICE y KITS_PATH y el kit_body de data.py.
-Llamar el authToken que se generó cuando se creó el nuevo usuario.
-Llamar el encabezado authorization.
-Resultado Esta solicitud generará un kit dentro del usuario enlazado por medio del authToken
+- Hacer clic a “Desde” 
+- Escribir la dirección "Desde"
+- Hacer clic a “Hasta”
+- Escribir la dirección “Hasta”
+- Hacer click al botón “Pedir un taxi”.               
 
-Pruebas de la lista de comprobación del campo 'name'
+### 2. Seleccionar la tarifa Comfort.
 
-Descargar pytest.
+- Hacer click a “Comfort”.
 
-Importar data y sender_stand_request.
 
-Escribir una función con el método GET para cambiar valores en el parámetro 'name', utilizando el kit_body de data, además, se debe copiar el diccionario del archivo data para evitar cambios en los datos del diccionario de origen.
+### 3. Rellenar el número de teléfono.
 
-Crear una función de prueba positiva teniendo en cuenta el kit_body, el post del kit_body y el status code.
+- Hacer click al botón “Número de teléfono”.                                                                                              
+- Hacer click al texto “Número de teléfono”.      
+- Escribir el número “phone_number”.                
+- Hacer click al botón “siguiente”.                       
+	(abre la ventana emergente para introducir el código del SMS)
+- Introducir el código del SMS.                            
+- Hacer click al botón “confirmar”.
 
-Comprobar si el código de estado de la función de prueba positiva es 201 y que el campo 'name' esté en la respuesta y contiene un valor.
+### 4. Agregar una tarjeta de crédito.
 
-Crear una función de prueba negativa teniendo en cuenta el kit_body, el post del kit_body y el status code.
+- Hacer click a “Método de pago”.                  
+- Hacer click a “Agregar tarjeta”                      
+- Hacer click al “numero de tarjeta”                 
+- Escribir el numero de tarjeta “234 5678 9100’”.      
+- Hacer click al código.                                      
+- Escribir el código “111”.                                   
+- Hacer click en la pantalla.                               
+- Hacer click al botón “Agregar”-.                      
+- Hacer click al botón X.                                 
 
-Comprobar si el código de estado de la función de prueba negativa es 400 y que el status code en el cuerpo de respuesta es 400.
+### 5. Escribir un mensaje para el controlador.
 
-Crear cada prueba en una función separada y cada uno debe tener el prefijo 'test' para que pytest la tenga en cuenta.
+- Hacer click a “Mensaje para el conductor”.   
+- Escribir “Traiga un aperitivo”.              
 
-Resultado Las pruebas estarán automatizadas y cada prueba creará un nuevo kit dentro del usuario teniendo en cuenta el parámetro de la prueba.
+### 6. Pedir una manta y pañuelos.
 
-Lista de comprobación por tener en cuenta
+- Hacer click al botón de “Manta y pañuelos”. 
 
-El número permitido de caracteres (1): kit_body = { "name": "a"}
-El número permitido de caracteres (511): kit_body = { "name":"El valor de prueba para esta comprobación será inferior a"}
-El número de caracteres es menor que la cantidad permitida (0): kit_body = { "name": "" }
-El número de caracteres es mayor que la cantidad permitida (512): kit_body = { "name":"El valor de prueba para esta comprobación será inferior a” }
-Se permiten caracteres especiales: kit_body = { "name": ""№%@"," }
-Se permiten espacios: kit_body = { "name": " A Aaa " }
-Se permiten números: kit_body = { "name": "123" }
-El parámetro no se pasa en la solicitud: kit_body = { }
-Se ha pasado un tipo de parámetro diferente (número): kit_body = { "name": 123 }
-Reglas
+### 7. Pedir 2 helados
 
-Se deben tener en cuenta el headers, status_code, status_code, ok, url, request, text, json() para que las respuestas de las funciones sean correctas y las pruebas estén bien ejecutadas. Tambien, hay que tener en cuenta la conexión al git y clonar el repositorio con SSH para trabajar en el proyecto de forma local. Cuando ya se haya terminado de trabajar con el proyecto, se debe empuhar al git por medio de comandos de commit
+- Hacer click al botón “+” del texto Helado.   
+
+### 8. Aparece el modal para buscar un taxi.
+
+- Hacer click al botón para buscar un taxi.
+
+
+## **Reglas**
+El localizador de cada botón y campo debe ser único. Igual que el nombre de los métodos. También hay que utilizar las esperas inteligentes de Selenium para que las pruebas tengan
+tiempo de realizarse. Además, hay que tener en cuenta la conexión al git y clonar el repositorio con SSH para trabajar en el proyecto de forma local. 
+Cuando ya se haya terminado de trabajar con el proyecto, se debe empujar al git por medio de comandos de commit

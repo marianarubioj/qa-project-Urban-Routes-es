@@ -14,20 +14,20 @@ En este caso se comprobarán las funcionalidades de Urban Routes al pedir un tax
 
 ## **Tecnologías y técnicas utilizadas.**
 
-GitHub
-Pycharm
-Lenguaje python
-Paquete Pytest
-Paquete selenium
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from selenium import webdriver
-import json 
-import time 
-from selenium.common import WebDriverException
+- GitHub
+- Pycharm
+- Lenguaje python
+- Paquete Pytest
+- Paquete selenium
+- from selenium.webdriver.common.by import By
+- from selenium.webdriver.support.wait import WebDriverWait
+- from selenium.webdriver.support import expected_conditions as EC
+- from selenium.webdriver.chrome.service import Service
+- from selenium.webdriver.chrome.options import Options
+- from selenium import webdriver
+- import json 
+- import time 
+- from selenium.common import WebDriverException
 
 ## **Reglas**
 

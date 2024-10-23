@@ -1,11 +1,9 @@
 import code
 import data
-from code import retrieve_phone_code
 from locators import LocatorsUrbanRoutesPage
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from time import sleep
 
 class MethodsUrbanRoutesPage:
 
@@ -15,7 +13,6 @@ class MethodsUrbanRoutesPage:
 
 #1. Configurar la dirección
     def click_from_field(self):
-        sleep(5)
         self.driver.find_element(*self.locators.from_field).click()
 
     def set_from_field(self):
@@ -42,7 +39,6 @@ class MethodsUrbanRoutesPage:
     def click_button_comfort(self):
         WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[1]/div[5]')))
         self.driver.find_element(*self.locators.button_comfort).click()
-        #Creo que debo hacer un scroll para que baje
 
 #3. Rellenar el número de teléfono.
     def click_button_phone_number(self):
@@ -62,16 +58,11 @@ class MethodsUrbanRoutesPage:
         self.driver.find_element(*self.locators.button_following).click()
 
     def set_code_sms_field(self):
-        self.driver.find_element(*self.locators.code_sms_field).send_keys(code.retrieve_phone_code)
-
-    def get_code_sms_field(self):
-        sleep(5)
-        return self.driver.find_element(*self.locators.code_sms_field).get_property('value')
-
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.ID, 'code')))
+        self.driver.find_element(*self.locators.code_sms_field).send_keys(code.retrieve_phone_code(driver=self.driver))
 
     def click_button_confirm(self):
         self.driver.find_element(*self.locators.button_confirm).click()
-
 
 
  #4. Agregar una tarjeta de crédito.
@@ -136,7 +127,6 @@ class MethodsUrbanRoutesPage:
 
 #9. Esperar a que aparezca la información del conductor en el modal (opcional).
     def wait_window_waiting_taxi(self):
-        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.NAME, 'Detalles')))
-        #self.driver.find_element(*self.locators.window_waiting_taxi)
-        self.driver.find_element(By.NAME, 'Detalles')
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '//div[text()="Detalles"]')))
+        return self.driver.find_element(By.XPATH, '//div[text()="Detalles"]').text
 

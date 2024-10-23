@@ -17,7 +17,6 @@ En este caso se comprobarán las funcionalidades de Urban Routes al pedir un tax
 GitHub
 Pycharm
 Lenguaje python
-Librería requests
 Paquete Pytest
 Paquete selenium
 from selenium.webdriver.common.by import By
@@ -32,13 +31,21 @@ from selenium.common import WebDriverException
 
 ## **Reglas**
 
+El localizador de cada botón y campo debe ser único. Igual que el nombre de los métodos. También hay que utilizar las esperas inteligentes de Selenium para que las pruebas tengan
+tiempo de realizarse. Además, hay que tener en cuenta la conexión al git y clonar el repositorio con SSH para trabajar en el proyecto de forma local. 
+Cuando ya se haya terminado de trabajar con el proyecto, se debe empujar al git por medio de comandos de commit
+
 ### **locators.py**
 
 En este archivo está almacenada la clase LocatorsUrbanRoutesPage, la cual, contiene los localizadores para cada campo y/botón.
+Llama a "from selenium.webdriver.common.by import By"
+ 
 
 ### **methods.py**
 
 En este archivo está la clase MethodsUrbanRoutesPage, la cual, contiene los métodos.
+Llama a import code, import data, from locators import LocatorsUrbanRoutesPage, from selenium.webdriver.common.by import By, 
+from selenium.webdriver.support.wait import WebDriverWait, from selenium.webdriver.support import expected_conditions as 
 
 ### **data.py**
 
@@ -47,13 +54,20 @@ En este archivo estan almacenadas los cuerpos que se solicitan por medio del get
 ### **main.py**
 
 En este archivo están almacenadas las pruebas para pedir un taxi por medio de la tarifa "Comfort".
+Llama a import data, from methods import MethodsUrbanRoutesPage, from selenium import webdriver , from selenium.webdriver.chrome.service import Service, 
+from selenium.webdriver.chrome.options import Options, from locators import LocatorsUrbanRoutesPage
 
+### **code.py**
+En este archivo está el código que devuelve un número de confirmación de teléfono y lo devuelve como un string.
 
 ## **Pasos para realizar las pruebas pertinentes al pedir un taxi por medio de la tarifa comfort**
 
+Es muy importante descargar los paquetes selenium y pytest. Además tener en cuenta las funciones de selenium, las cuales, están especificadas en REGLAS; de esta forma, 
+se podrán usar comandos como el By, el WaitDriverWait, entre otras.
+
 ### 1. Configurar la dirección
 
-- Hacer clic a “Desde” 
+- Hacer clic a “Desde”
 - Escribir la dirección "Desde"
 - Hacer clic a “Hasta”
 - Escribir la dirección “Hasta”
@@ -103,8 +117,7 @@ En este archivo están almacenadas las pruebas para pedir un taxi por medio de l
 
 - Hacer click al botón para buscar un taxi.
 
+### 9. Información del conductor en el modal 
+ - Esperar a que aparezca la información del conductor en el modal. 
 
-## **Reglas**
-El localizador de cada botón y campo debe ser único. Igual que el nombre de los métodos. También hay que utilizar las esperas inteligentes de Selenium para que las pruebas tengan
-tiempo de realizarse. Además, hay que tener en cuenta la conexión al git y clonar el repositorio con SSH para trabajar en el proyecto de forma local. 
-Cuando ya se haya terminado de trabajar con el proyecto, se debe empujar al git por medio de comandos de commit
+

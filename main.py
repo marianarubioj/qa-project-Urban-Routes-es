@@ -1,22 +1,9 @@
-from crypt import methods
-from time import sleep
-
 import data
-from locators import LocatorsUrbanRoutesPage
-import code
 from methods import MethodsUrbanRoutesPage
-
 from selenium import webdriver
-from selenium.webdriver import Keys
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-
-
 from locators import LocatorsUrbanRoutesPage
-
 
 class TestUrbanRoutes:
     driver = None
@@ -53,16 +40,14 @@ class TestUrbanRoutes:
     def test_click_button_comfort(self):
         self.routes_page.click_button_comfort()
 
-    #def test_add_phone_number(self):
-        #self.routes_page.click_button_phone_number()
-        #self.routes_page.click_phone_number_field()
-        #self.routes_page.set_phone_number_field()
-        #assert self.routes_page.get_phone_number_field() == data.phone_number
-
-        #self.routes_page.set_code_sms_field()
-        #assert self.routes_page.get_code_sms_field() == code.retrieve_phone_code()
-
-        #self.routes_page.click_button_confirm()
+    def test_add_phone_number(self):
+        self.routes_page.click_button_phone_number()
+        self.routes_page.click_phone_number_field()
+        self.routes_page.set_phone_number_field()
+        assert self.routes_page.get_phone_number_field() == data.phone_number
+        self.routes_page.click_button_following()
+        self.routes_page.set_code_sms_field()
+        self.routes_page.click_button_confirm()
 
 
     def test_add_payment_method(self):
@@ -94,7 +79,8 @@ class TestUrbanRoutes:
         self.routes_page.click_button_looking_for_taxi()
 
     def test_wait_window_waiting_taxi(self):
-        assert self.routes_page.wait_window_waiting_taxi().text == 'Detalles'
+        assert self.routes_page.wait_window_waiting_taxi() == 'Detalles'
+
 
     @classmethod
     def teardown_class(cls):

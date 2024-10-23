@@ -9,7 +9,7 @@ class LocatorsUrbanRoutesPage:
     phone_number_field = (By.XPATH, '//*[@id="root"]/div/div[1]/div[2]/div[1]/form/div[1]/div')
     id_phone_field = (By.ID, 'phone')
     button_following = (By.XPATH, '//*[@id="root"]/div/div[1]/div[2]/div[1]/form/div[2]/button')
-    code_sms_field = (By.XPATH, '//*[@id="root"]/div/div[1]/div[2]/div[2]/form/div[1]/div')
+    code_sms_field = (By.ID, 'code')
     button_confirm = (By.XPATH, '//*[@id="root"]/div/div[1]/div[2]/div[2]/form/div[2]/button[1]')
     payment_method = (By.CLASS_NAME, 'pp-button.filled')
     add_card = (By.CLASS_NAME, 'pp-row.disabled')

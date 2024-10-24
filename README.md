@@ -65,7 +65,9 @@ En este archivo está el código que devuelve un número de confirmación de tel
 Es muy importante descargar los paquetes selenium y pytest. Además tener en cuenta las funciones de selenium, las cuales, están especificadas en REGLAS; de esta forma, 
 se podrán usar comandos como el By, el WaitDriverWait, entre otras.
 
+
 ### 1. Configurar la dirección
+
 
 - Hacer clic a “Desde”
 - Escribir la dirección "Desde"

@@ -1,6 +1,6 @@
-import code
+import helpers
 import data
-from locators import LocatorsUrbanRoutesPage
+from locators import UrbanRoutesPage
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -9,7 +9,7 @@ class MethodsUrbanRoutesPage:
 
     def __init__(self, driver):
         self.driver = driver
-        self.locators = LocatorsUrbanRoutesPage
+        self.locators = UrbanRoutesPage
 
 #1. Configurar la dirección
     def click_from_field(self):
@@ -34,11 +34,14 @@ class MethodsUrbanRoutesPage:
         WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.CLASS_NAME,'button.round')))
         self.driver.find_element(*self.locators.button_get_a_cab).click()
 
-
 #2. Seleccionar la tarifa Comfort.
     def click_button_comfort(self):
-        WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[1]/div[5]')))
+        #WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[1]/div[5]')))
         self.driver.find_element(*self.locators.button_comfort).click()
+
+    def verify_click_button_comfort(self):
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME, 'r-sw-label')))
+        return self.driver.find_element(*self.locators.verify_comfort).text
 
 #3. Rellenar el número de teléfono.
     def click_button_phone_number(self):
@@ -59,11 +62,13 @@ class MethodsUrbanRoutesPage:
 
     def set_code_sms_field(self):
         WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.ID, 'code')))
-        self.driver.find_element(*self.locators.code_sms_field).send_keys(code.retrieve_phone_code(driver=self.driver))
+        self.driver.find_element(*self.locators.code_sms_field).send_keys(helpers.retrieve_phone_code(driver=self.driver))
 
     def click_button_confirm(self):
         self.driver.find_element(*self.locators.button_confirm).click()
 
+    def verify_phone_number_field(self):
+        return self.driver.find_element(*self.locators.button_phone_number).text
 
  #4. Agregar una tarjeta de crédito.
     def click_payment_method(self):
@@ -101,6 +106,9 @@ class MethodsUrbanRoutesPage:
     def click_button_x(self):
         self.driver.find_element(*self.locators.button_x).click()
 
+    def verify_button_card_name(self):
+        return self.driver.find_element(*self.locators.button_card_name).text
+
 #5. Escribir un mensaje para el controlador.
     def click_message_for_driver_field(self):
         self.driver.find_element(*self.locators.message_for_driver_field).click()
@@ -119,6 +127,9 @@ class MethodsUrbanRoutesPage:
     def click_add_ice_cream(self):
         WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[3]/div/div[2]/div[1]/div/div[2]/div/div[3]')))
         self.driver.find_element(*self.locators.add_ice_cream).click()
+
+    def verify_twice_click_ice_cream(self):
+        return self.driver.find_element(*self.locators.verify_twice_ice_cream).text
 
 #8. Aparece el modal para buscar un taxi.
     def click_button_looking_for_taxi(self):

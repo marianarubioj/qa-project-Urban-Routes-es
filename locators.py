@@ -1,10 +1,11 @@
 from selenium.webdriver.common.by import By
 
-class LocatorsUrbanRoutesPage:
+class UrbanRoutesPage:
     from_field = (By.ID, 'from')
     to_field = (By.ID, 'to')
     button_get_a_cab = (By.CLASS_NAME, 'button.round')
     button_comfort = (By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[1]/div[5]')
+    verify_comfort = (By.CLASS_NAME, 'r-sw-label')
     button_phone_number = (By.CLASS_NAME, 'np-text')
     phone_number_field = (By.XPATH, '//*[@id="root"]/div/div[1]/div[2]/div[1]/form/div[1]/div')
     id_phone_field = (By.ID, 'phone')
@@ -20,10 +21,12 @@ class LocatorsUrbanRoutesPage:
     body_credit_card = (By.CLASS_NAME, 'card-wrapper')
     button_add = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[2]/form/div[3]/button[1]')
     button_x = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[1]/button')
+    button_card_name = (By.CLASS_NAME, 'pp-value-text')
     message_for_driver_field = (By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[3]/div')
     text_message_for_driver_field = (By.ID, 'comment')
     blanket_scarves_field = (By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[1]/div/div[2]')
     add_ice_cream = (By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[3]/div/div[2]/div[1]/div/div[2]/div/div[3]')
+    verify_twice_ice_cream = (By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[3]/div/div[2]/div[1]/div/div[2]/div/div[2]')
     button_looking_for_taxi = (By.CSS_SELECTOR, '.smart-button')
     window_waiting_taxi = (By.CLASS_NAME, 'order-body')
 

@@ -19,6 +19,7 @@ En este caso se comprobarán las funcionalidades de Urban Routes al pedir un tax
 - Lenguaje python
 - Paquete Pytest
 - Paquete selenium
+- POM
 - from selenium.webdriver.common.by import By
 - from selenium.webdriver.support.wait import WebDriverWait
 - from selenium.webdriver.support import expected_conditions as EC
@@ -65,6 +66,21 @@ En este archivo está el código que devuelve un número de confirmación de tel
 Es muy importante descargar los paquetes selenium y pytest. Además tener en cuenta las funciones de selenium, las cuales, están especificadas en REGLAS; de esta forma, 
 se podrán usar comandos como el By, el WaitDriverWait, entre otras.
 
+1. Lo primero que hay que hacer es escribir el paso a paso para pedir un taxi por medio de la tarifa Comfort.
+2. Se crea un archivo 'locators' y se registará clase UrbanRoutesPage, la cual se usará en el archivo 'main' ya que está tendra los parámetros. En este archivo, se escribirá el localizador de cada campo y botón que se
+necesite para ubicarlo. 
+3. Se crea un archivo 'methods', el cual, incluirá una clase y el constructor para que los valores sean únicos, se escribirán los métodos ya que estos interactúan con los elementos de la página web. 
+Se debe escribir un método por cada paso a seguir. Los pasos están en la sección 'Pasos para pedir un taxi por medio de la tarifa Comfort'.
+Además, en cada interacción con un elemento, hay que llamar a la instrucción 'assert' para realizar la validación de cada prueba y confirmar que si se está ejecutando paso por paso, y se hará por medio del 'return'.
+4. Se crea un archivo 'data' donde estarán registrados los datos que se utilizarán para rellenar campos.
+5. Se crea un archivo 'helpers', donde irá escrito el método de apoyo, el cual, regresa el código del teléfono.
+6. Se crea un archivo 'main' junto con la clase UrbanRoutesPage, el decorador y las clases de métodos. Además, hay que crear un controlador, para abrir, cerrar y hacer click en el navegador. 
+Cada prueba debe contener un nombre único que empiece por test para que se considere como una prueba. Para cada prueba hay que llamar 
+Para cada prueba, se necesitarán un argumento como self, la clase donde están los métodos y el método que hace referencia a la prueba. Dentro de la prueba se llama a la instrucción 'assert'.
+    
+
+
+## **Pasos para pedir un taxi por medio de la tarifa Comfort**
 
 ### 1. Configurar la dirección
 

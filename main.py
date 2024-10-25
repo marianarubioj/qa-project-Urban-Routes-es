@@ -1,7 +1,4 @@
-from time import sleep
-
 import data
-import locators
 from methods import MethodsUrbanRoutesPage
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service

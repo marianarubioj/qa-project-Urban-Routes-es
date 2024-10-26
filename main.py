@@ -1,9 +1,11 @@
 import data
-from methods import MethodsUrbanRoutesPage
+from methods import UrbanRoutesPage
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from locators import UrbanRoutesPage
+
+#se agregó el assert para la prueba de selección de mantas y pañuelos. está en la linea 76
+
 
 class TestUrbanRoutes:
     driver = None
@@ -22,8 +24,7 @@ class TestUrbanRoutes:
         # Inicializar el driver con opciones
         cls.driver = webdriver.Chrome(service=service, options=options)
         cls.driver.get(data.urban_routes_url)
-        cls.locators = UrbanRoutesPage()
-        cls.routes_page = MethodsUrbanRoutesPage(cls.driver)
+        cls.routes_page = UrbanRoutesPage(cls.driver)
 
         cls.driver.implicitly_wait(10)
 
@@ -72,6 +73,7 @@ class TestUrbanRoutes:
 
     def test_click_blanket_scarves_field(self):
         self.routes_page.click_blanket_scarves_field()
+        assert self.routes_page.verify_click_blanket_scarves_field() == True
 
     def test_click_add_ice_cream(self):
         self.routes_page.click_add_ice_cream()

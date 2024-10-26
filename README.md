@@ -1,3 +1,5 @@
+#se agregaron los comandos ejecutar las pruebas utilizando la ruta de archivo main.py. se encuentran desde la línea 86
+
 # **PROYECTO URBAN ROUTES ES**
 
 Mariana Rubio Jaramillo. Cohorte 14
@@ -77,26 +79,27 @@ Además, en cada interacción con un elemento, hay que llamar a la instrucción 
 6. Se crea un archivo 'main' junto con la clase UrbanRoutesPage, el decorador y las clases de métodos. Además, hay que crear un controlador, para abrir, cerrar y hacer click en el navegador. 
 Cada prueba debe contener un nombre único que empiece por test para que se considere como una prueba. Para cada prueba hay que llamar 
 Para cada prueba, se necesitarán un argumento como self, la clase donde están los métodos y el método que hace referencia a la prueba. Dentro de la prueba se llama a la instrucción 'assert'.
-    
 
 
 ## **Pasos para pedir un taxi por medio de la tarifa Comfort**
 
-### 1. Configurar la dirección
-
+### 1. def test_set_route(self): Configurar la dirección 
 
 - Hacer clic a “Desde”
 - Escribir la dirección "Desde"
 - Hacer clic a “Hasta”
 - Escribir la dirección “Hasta”
-- Hacer click al botón “Pedir un taxi”.               
+      
 
-### 2. Seleccionar la tarifa Comfort.
+### 2.  def test_click_button_get_a_cab(self):
+
+- - Hacer click al botón “Pedir un taxi”. 
+
+### 3.  def test_click_button_comfort(self): Seleccionar la tarifa Comfort.
 
 - Hacer click a “Comfort”.
 
-
-### 3. Rellenar el número de teléfono.
+### 4. def test_add_phone_number(self): Rellenar el número de teléfono.
 
 - Hacer click al botón “Número de teléfono”.                                                                                              
 - Hacer click al texto “Número de teléfono”.      
@@ -106,7 +109,7 @@ Para cada prueba, se necesitarán un argumento como self, la clase donde están 
 - Introducir el código del SMS.                            
 - Hacer click al botón “confirmar”.
 
-### 4. Agregar una tarjeta de crédito.
+### 5. def test_add_payment_method(self): Agregar una tarjeta de crédito.
 
 - Hacer click a “Método de pago”.                  
 - Hacer click a “Agregar tarjeta”                      
@@ -116,26 +119,26 @@ Para cada prueba, se necesitarán un argumento como self, la clase donde están 
 - Escribir el código “111”.                                   
 - Hacer click en la pantalla.                               
 - Hacer click al botón “Agregar”-.                      
-- Hacer click al botón X.                                 
+- Hacer click al botón X.
 
-### 5. Escribir un mensaje para el controlador.
+### 6. def test_click_message_for_driver_field(self): Escribir un mensaje para el controlador.
 
 - Hacer click a “Mensaje para el conductor”.   
 - Escribir “Traiga un aperitivo”.              
 
-### 6. Pedir una manta y pañuelos.
+### 7. def test_click_blanket_scarves_field(self): Pedir una manta y pañuelos.
 
 - Hacer click al botón de “Manta y pañuelos”. 
 
-### 7. Pedir 2 helados
+### 8. def test_click_add_ice_cream(self): Pedir 2 helados
 
 - Hacer click al botón “+” del texto Helado.   
 
-### 8. Aparece el modal para buscar un taxi.
+### 9. def test_click_button_get_a_taxi(self): Aparece el modal para buscar un taxi.
 
 - Hacer click al botón para buscar un taxi.
 
-### 9. Información del conductor en el modal 
+### 10. def test_wait_window_waiting_taxi(self): Información del conductor en el modal 
  - Esperar a que aparezca la información del conductor en el modal. 
 
 
